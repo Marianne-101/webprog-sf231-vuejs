@@ -68,23 +68,7 @@
         </div>
     </div>
 
-    <div id="app">
-      {{ message }}
-  </div>
-
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
-  <script>
-      const app = Vue.createApp({
-          data() {
-              return {
-                  message: "Hello World!"
-              }
-          }
-      })
-
-      app.mount('#app');
-
+    <script>
         function showContent(section) {
             document.querySelectorAll('#content > div').forEach(div => div.style.display = 'none');
             document.getElementById(section).style.display = 'block';
