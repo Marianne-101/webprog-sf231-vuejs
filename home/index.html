@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal Profile Web Page</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/flexbox-grid.css?version=0.4">
-</head>
-<body>
-
-  <h1>Personal Profile</h1>
+<h1>Personal Profile Web Page</h1>
     <div class="box-container">
         <div class="box" onclick="showContent('about')">About Me</div>
         <div class="box" onclick="showContent('education')">Education / Achievements</div>
@@ -20,18 +9,20 @@
     </div>
 
     <div id="content">
-        <button onclick="hideContent()">Back</button>
+        <button onclick="hideContent()" style="margin-bottom: 20px;">Back</button>
         <div id="about" style="display: none;">
             <h2>About Me</h2>
-            <p>Hello! My name is Marianne Ellise P. Lama. I am a computer science student with a passion for technology, innovation, and learning. I have a love for outdoor activities such as camping, hiking, and swimming.</p>
+            <p>
+                Hello! My name is Marianne Ellise P. Lama. I am a computer science student with a passion for technology, innovation, and learning. I have a love for outdoor activities such as camping, hiking, and swimming. I also enjoy exploring new places and learning new skills, like playing the guitar.
+            </p>
         </div>
         <div id="education" style="display: none;">
             <h2>Education / Achievements</h2>
             <ul>
-                <li>Finished High School at Signal Village National High School</li>
-                <li>Graduated Senior High at Learn & Explore Montessori School</li>
-                <li>Currently Studying at Asia Pacific College</li>
-                <li>Graduated with Honors in High School & Senior High</li>
+                <li>I finished my High School at Signal Village National High School.</li>
+                <li>I Graduated Senior High at Learn & Explore Montessori School.</li>
+                <li>Currently Studying at Asia Pacific College.</li>
+                <li>Graduated High School & Senior High with Honors.</li>
             </ul>
         </div>
         <div id="it-experience" style="display: none;">
@@ -48,7 +39,7 @@
                 <li>Trekking or Hiking</li>
                 <li>Swimming</li>
                 <li>Learning how to play guitar</li>
-                <li>Traveling</li>
+                <li>Travelling</li>
             </ul>
         </div>
         <div id="goals" style="display: none;">
@@ -56,9 +47,9 @@
             <ul>
                 <li>To be successful</li>
                 <li>To give back to those who believe in me</li>
-                <li>To enjoy life</li>
-                <li>Maintain a healthy lifestyle</li>
-                <li>Adventure and exploration</li>
+                <li>To never forget to enjoy life</li>
+                <li>Maintain a Healthy Lifestyle</li>
+                <li>Adventure and Exploration</li>
             </ul>
         </div>
         <div id="gallery" style="display: none;">
@@ -77,7 +68,23 @@
         </div>
     </div>
 
-    <script>
+    <div id="app">
+      {{ message }}
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+      const app = Vue.createApp({
+          data() {
+              return {
+                  message: "Hello World!"
+              }
+          }
+      })
+
+      app.mount('#app');
+
         function showContent(section) {
             document.querySelectorAll('#content > div').forEach(div => div.style.display = 'none');
             document.getElementById(section).style.display = 'block';
