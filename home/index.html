@@ -4,7 +4,6 @@
   <title>Personal Profile Web Page</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/flexbox-grid.css?version=0.3">
-
 </head>
 <body>
 
@@ -78,15 +77,34 @@
   </div>
 
   <h1>Vue Example</h1>
+  <p>The message is taken from 'data' inside the Vue instance by writing {{ message }} inside the div with id="app".</p>
 
-<p>The message is taken from 'data' inside the Vue instance by writing {{ message }} inside the div with id="app".</p>
+  <div id="app">
+    {{ message }}
+  </div>
 
-<div id="app">
-  {{ message }}
-</div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: "Hello  WEBPROG SF231 World!"
+        }
+      }
+    });
 
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script src="js/vue.js"></script>
+    app.mount('#app');
+
+    function showContent(section) {
+      document.querySelectorAll('#content > div').forEach(div => div.style.display = 'none');
+      document.getElementById(section).style.display = 'block';
+      document.getElementById('content').style.display = 'block';
+    }
+
+    function hideContent() {
+      document.getElementById('content').style.display = 'none';
+    }
+  </script>
 
 </body>
 </html>
