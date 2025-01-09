@@ -3,7 +3,8 @@
 <head>
   <title>Personal Profile Web Page</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/flexbox-grid.css?version=0.3">
+  <link rel="stylesheet" href="css/flexbox-grid.css?version=0.1">
+  <link rel="stylesheet" href="css/pink.css?version=0.1">
 </head>
 <body>
 
@@ -81,6 +82,7 @@
 
   <div id="app">
     {{ message }}
+        <div v-bind:class="vueClass">This element is bound to the "pinkBG" class.</div>
   </div>
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
