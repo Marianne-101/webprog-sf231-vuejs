@@ -86,27 +86,6 @@
   </div>
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script>
-    const app = Vue.createApp({
-      data() {
-        return {
-          message: "Hello  WEBPROG SF231 World!"
-        }
-      }
-    });
-
-    app.mount('#app');
-
-    function showContent(section) {
-      document.querySelectorAll('#content > div').forEach(div => div.style.display = 'none');
-      document.getElementById(section).style.display = 'block';
-      document.getElementById('content').style.display = 'block';
-    }
-
-    function hideContent() {
-      document.getElementById('content').style.display = 'none';
-    }
-  </script>
 
 </body>
 </html>
