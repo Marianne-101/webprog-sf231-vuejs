@@ -79,13 +79,11 @@
     </div>
 
 <div id="app"> 
-    <div class="message">{{ message }}</div> <!-- Message container --> </div> 
+    <div class="message">{{ message }}</div> 
+</div> 
     
-    <script> function showContent(section) { document.querySelectorAll('#content > div').forEach(div => div.style.display = 'none'); document.getElementById(section).style.display = 'block'; document.getElementById('content').style.display = 'block'; } 
-        
-        function hideContent() { document.getElementById('content').style.display = 'none'; 
-                               } 
-    </script> 
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> 
     <script src="js/vuejs.js"></script>
+    
 </body>
 </html>
