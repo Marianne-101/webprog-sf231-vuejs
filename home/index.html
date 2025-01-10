@@ -78,5 +78,21 @@
         </div>
     </div>
 
-<div class="message" :class="vueClass">{{ message }}</div> <!-- Message container --> <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <script> const app = Vue.createApp({ data() { return { message: "HELLO WEBPROG SF231 World!", vueClass: "pinkBG" }; } }); app.mount('#app'); </script></body>
+<div class="message" :class="vueClass">{{ message }}</div> <!-- Message container -->
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    message: "HELLO WEBPROG SF231 World!",
+                    vueClass: "pinkBG"
+                };
+            }
+        });
+
+        app.mount('#app');
+    </script>
+
+</body>
 </html>
