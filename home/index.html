@@ -1,47 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webprog SF231</title>
-    <link rel="stylesheet" href="css/flexbox-grid.css?version=0.2">
-    <link rel="stylesheet" href="css/pink.css?version=0.2">
-    <link rel="stylesheet" href="css/style.css?version=0.2">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- Vue.js CDN -->
-    <script src="js/vue.js" defer></script>
-    <script src="js/scripts.js" defer></script>
+    <title>Personal Profile Web Page</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/flexbox-grid.css?version=0.1">
+    <link rel="stylesheet" href="css/pink.css?version=0.1">
 </head>
 <body>
-    <h1>Welcome to WEBPROG SF231</h1>
-    <div class="box-container">
-        <div class="box" onclick="showContent('about')">About</div>
-        <div class="box" onclick="showContent('gallery')">Gallery</div>
-        <div class="box" onclick="showContent('contact')">Contact</div>
+    <h1>Personal Profile Web Page</h1>
+    <div id="app">
+        <!-- Box container for navigation -->
+        <div class="box-container">
+            <div class="box" @click="showContent('about')">About Me</div>
+            <div class="box" @click="showContent('education')">Education / Achievements</div>
+            <div class="box" @click="showContent('it-experience')">IT Experience</div>
+            <div class="box" @click="showContent('hobbies')">Hobbies & Interests</div>
+            <div class="box" @click="showContent('goals')">Goals</div>
+            <div class="box" @click="showContent('gallery')">Picture Gallery</div>
+        </div>
+
+        <!-- Dynamic content display -->
+        <div id="content" v-show="isContentVisible">
+            <button @click="hideContent" style="margin-bottom: 20px;">Back</button>
+            <div v-show="currentSection === 'about'">
+                <h2>About Me</h2>
+                <p>
+                    Hello! My name is Marianne Ellise P. Lama. I am a computer science student with a passion for technology, innovation, and learning. I have a love for outdoor activities such as camping, hiking, and swimming. I also enjoy exploring new places and learning new skills, like playing the guitar.
+                </p>
+            </div>
+            <div v-show="currentSection === 'education'">
+                <h2>Education / Achievements</h2>
+                <ul>
+                    <li>I finished my High School at Signal Village National High School.</li>
+                    <li>I graduated Senior High at Learn & Explore Montessori School.</li>
+                    <li>Currently studying at Asia Pacific College.</li>
+                    <li>Graduated High School & Senior High with Honors.</li>
+                </ul>
+            </div>
+            <div v-show="currentSection === 'it-experience'">
+                <h2>IT Experience</h2>
+                <ul>
+                    <li>Programming</li>
+                    <li>Code Combat</li>
+                </ul>
+            </div>
+            <div v-show="currentSection === 'hobbies'">
+                <h2>Hobbies & Interests</h2>
+                <ul>
+                    <li>Camping</li>
+                    <li>Trekking or Hiking</li>
+                    <li>Swimming</li>
+                    <li>Learning how to play guitar</li>
+                    <li>Traveling</li>
+                </ul>
+            </div>
+            <div v-show="currentSection === 'goals'">
+                <h2>Goals In Life / Dreams</h2>
+                <ul>
+                    <li>To be successful</li>
+                    <li>To give back to those who believe in me</li>
+                    <li>To never forget to enjoy life</li>
+                    <li>Maintain a Healthy Lifestyle</li>
+                    <li>Adventure and Exploration</li>
+                </ul>
+            </div>
+            <div v-show="currentSection === 'gallery'">
+                <h2>Picture Gallery</h2>
+                <div class="gallery-container">
+                    <div class="gallery-item">
+                        <img src="https://github.com/Marianne-101/Webprog_Personal-Website/blob/main/Images/camping.jpg?raw=true" alt="Camping">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://github.com/Marianne-101/Webprog_Personal-Website/blob/main/Images/ocean.jpg?raw=true" alt="Ocean">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://github.com/Marianne-101/Webprog_Personal-Website/blob/main/Images/picture%20of%20me.jpg?raw=true" alt="My Picture">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="content">
-        <div id="about">
-            <h2>About</h2>
-            <p>Welcome to the about section of this website.</p>
-            <button onclick="hideContent()">Close</button>
-        </div>
-        <div id="gallery">
-            <h2>Gallery</h2>
-            <div class="gallery-container">
-                <div class="gallery-item"><img src="images/sample1.jpg" alt="Sample 1"></div>
-                <div class="gallery-item"><img src="images/sample2.jpg" alt="Sample 2"></div>
-                <div class="gallery-item"><img src="images/sample3.jpg" alt="Sample 3"></div>
-            </div>
-            <button onclick="hideContent()">Close</button>
-        </div>
-        <div id="contact">
-            <h2>Contact</h2>
-            <p>Email us at webprog@sf231.com</p>
-            <button onclick="hideContent()">Close</button>
-        </div>
-    </div>
-    <div id="app">
-        <div :class="vueClass">{{ message }}</div>
-    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                currentSection: '',
+                isContentVisible: false
+            },
+            methods: {
+                showContent(section) {
+                    this.currentSection = section;
+                    this.isContentVisible = true;
+                },
+                hideContent() {
+                    this.isContentVisible = false;
+                    this.currentSection = '';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
