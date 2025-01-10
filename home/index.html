@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Personal Profile Web Page</title>
+    <title>My First Vue Page</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/flexbox-grid.css?version=0.1">
     <link rel="stylesheet" href="css/pink.css?version=0.1">
+    
+    <title>Personal Profile Web Page</title>
 </head>
 <body>
     <h1>Personal Profile Web Page</h1>
     <div id="app">
-        <!-- Box container for navigation -->
         <div class="box-container">
             <div class="box" @click="showContent('about')">About Me</div>
             <div class="box" @click="showContent('education')">Education / Achievements</div>
@@ -19,7 +20,6 @@
             <div class="box" @click="showContent('gallery')">Picture Gallery</div>
         </div>
 
-        <!-- Dynamic content display -->
         <div id="content" v-show="isContentVisible">
             <button @click="hideContent" style="margin-bottom: 20px;">Back</button>
             <div v-show="currentSection === 'about'">
