@@ -100,3 +100,12 @@ body {
             transform: scale(1.05);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
+        .message { 
+            font-size: large; 
+            background-color: lightgreen; 
+            padding: 10px; 
+            border-radius: 8px; 
+            position: absolute; 
+            bottom: 10px; 
+            left: 10px; 
+        }
