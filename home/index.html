@@ -78,6 +78,5 @@
         </div>
     </div>
 
-    <script> function showContent(section) { document.querySelectorAll('#content > div').forEach(div => div.style.display = 'none'); document.getElementById(section).style.display = 'block'; document.getElementById('content').style.display = 'block'; } function hideContent() { document.getElementById('content').style.display = 'none'; } </script> <script> new Vue({ el: '#app', data: { currentSection: '', isContentVisible: false }, methods: { showContent(section) { this.currentSection = section; this.isContentVisible = true; }, hideContent() { this.isContentVisible = false; this.currentSection = ''; } } }); </script>
-</body>
+<div class="message" :class="vueClass">{{ message }}</div> <!-- Message container --> <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <script> const app = Vue.createApp({ data() { return { message: "HELLO WEBPROG SF231 World!", vueClass: "pinkBG" }; } }); app.mount('#app'); </script></body>
 </html>
