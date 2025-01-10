@@ -4,3 +4,8 @@
     font-size: x-large;
     background-color: lightgreen;
 }
+
+.message {
+    font-size: large;
+    color: black;
+}
