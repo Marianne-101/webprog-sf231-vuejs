@@ -82,6 +82,20 @@
     {{ message }}
       <div v-bind:class="vueClass">This element is bound to the "pinkBG" class.</div>
 </div>
+
+    <script>
+        function showContent(sectionId) {
+            document.querySelectorAll('#content > div').forEach((section) => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function hideContent() {
+            document.querySelectorAll('#content > div').forEach((section) => {
+                section.style.display = 'none';
+            });
+        }
     
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> 
     <script src="js/vue.js"></script>
