@@ -96,6 +96,17 @@
                 section.style.display = 'none';
             });
         }
+
+        const app = Vue.createApp({
+            data() {
+                return {
+                    message: "Welcome to my Vue App!",
+                    vueClass: "pinkBG"
+                };
+            }
+        });
+        app.mount('#app');
+    </script>
     
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> 
     <script src="js/vue.js"></script>
