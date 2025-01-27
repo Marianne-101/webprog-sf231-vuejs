@@ -1,0 +1,74 @@
+<h1>Personal Profile Web Page</h1>
+    <div class="box-container">
+        <div class="box" onclick="toggleContent(this)">
+            About Me
+            <div class="content">
+                <h2>About Me</h2>
+                <p>Hello! My name is Marianne Ellise P. Lama. I am a computer science student with a passion for technology, innovation, and learning. I enjoy outdoor activities such as camping, hiking, and swimming.</p>
+            </div>
+        </div>
+        <div class="box" onclick="toggleContent(this)">
+            Education / Achievements
+            <div class="content">
+                <h2>Education / Achievements</h2>
+                <ul>
+                    <li>High School: Signal Village National High School</li>
+                    <li>Senior High: Learn & Explore Montessori School</li>
+                    <li>Currently: Asia Pacific College</li>
+                    <li>Graduated High School & Senior High with Honors</li>
+                </ul>
+            </div>
+        </div>
+        <div class="box" onclick="toggleContent(this)">
+            IT Experience
+            <div class="content">
+                <h2>IT Experience</h2>
+                <ul>
+                    <li>Programming</li>
+                    <li>Code Combat</li>
+                </ul>
+            </div>
+        </div>
+        <div class="box" onclick="toggleContent(this)">
+            Hobbies & Interests
+            <div class="content">
+                <h2>Hobbies & Interests</h2>
+                <ul>
+                    <li>Camping</li>
+                    <li>Hiking</li>
+                    <li>Swimming</li>
+                    <li>Learning guitar</li>
+                    <li>Traveling</li>
+                </ul>
+            </div>
+        </div>
+        <div class="box" onclick="toggleContent(this)">
+            Goals
+            <div class="content">
+                <h2>Goals In Life</h2>
+                <ul>
+                    <li>To be successful</li>
+                    <li>To give back to those who believe in me</li>
+                    <li>Maintain a healthy lifestyle</li>
+                    <li>Adventure and exploration</li>
+                </ul>
+            </div>
+        </div>
+        <div class="box" onclick="toggleContent(this)">
+            Picture Gallery
+            <div class="content">
+                <h2>Picture Gallery</h2>
+                <div class="gallery-container">
+                    <div class="gallery-item">
+                        <img src="https://github.com/Marianne-101/Webprog_Personal-Website/blob/main/Images/camping.jpg?raw=true" alt="Camping">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://github.com/Marianne-101/Webprog_Personal-Website/blob/main/Images/ocean.jpg?raw=true" alt="Ocean">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://github.com/Marianne-101/Webprog_Personal-Website/blob/main/Images/picture%20of%20me.jpg?raw=true" alt="My Picture">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
