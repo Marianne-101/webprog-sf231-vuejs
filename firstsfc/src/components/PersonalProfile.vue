@@ -1,3 +1,4 @@
+<template>
 <h1>Personal Profile Web Page</h1>
     <div class="box-container">
         <div class="box" onclick="toggleContent(this)">
@@ -143,3 +144,4 @@
 </ul>
 </div>
 </div>
+</template>
