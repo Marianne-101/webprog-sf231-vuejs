@@ -1,147 +1,76 @@
 <template>
-<h1>Personal Profile Web Page</h1>
+    <h1>Personal Profile Web Page</h1>
     <div class="box-container">
-        <div class="box" onclick="toggleContent(this)">
-            About Me
-            <div class="content">
-                <h2>About Me</h2>
-                <p>Hello! My name is Marianne Ellise P. Lama. I am a computer science student with a passion for technology, innovation, and learning. I enjoy outdoor activities such as camping, hiking, and swimming.</p>
+      <div class="box" v-for="(section, index) in sections" :key="index" @click="toggleContent(index)">
+        {{ section.title }}
+        <div class="content" v-show="activeIndex === index">
+          <h2>{{ section.title }}</h2>
+          <p v-if="section.type === 'text'">{{ section.content }}</p>
+          <ul v-else-if="section.type === 'list'">
+            <li v-for="(item, idx) in section.content" :key="idx">{{ item }}</li>
+          </ul>
+          <div v-else-if="section.type === 'gallery'" class="gallery-container">
+            <div class="gallery-item" v-for="(img, idx) in section.content" :key="idx">
+              <img :src="img.url" :alt="img.alt">
             </div>
+          </div>
         </div>
-        <div class="box" onclick="toggleContent(this)">
-            Education / Achievements
-            <div class="content">
-                <h2>Education / Achievements</h2>
-                <ul>
-                    <li>High School: Signal Village National High School</li>
-                    <li>Senior High: Learn & Explore Montessori School</li>
-                    <li>Currently: Asia Pacific College</li>
-                    <li>Graduated High School & Senior High with Honors</li>
-                </ul>
-            </div>
-        </div>
-        <div class="box" onclick="toggleContent(this)">
-            IT Experience
-            <div class="content">
-                <h2>IT Experience</h2>
-                <ul>
-                    <li>Programming</li>
-                    <li>Code Combat</li>
-                </ul>
-            </div>
-        </div>
-        <div class="box" onclick="toggleContent(this)">
-            Hobbies & Interests
-            <div class="content">
-                <h2>Hobbies & Interests</h2>
-                <ul>
-                    <li>Camping</li>
-                    <li>Hiking</li>
-                    <li>Swimming</li>
-                    <li>Learning guitar</li>
-                    <li>Traveling</li>
-                </ul>
-            </div>
-        </div>
-        <div class="box" onclick="toggleContent(this)">
-            Goals
-            <div class="content">
-                <h2>Goals In Life</h2>
-                <ul>
-                    <li>To be successful</li>
-                    <li>To give back to those who believe in me</li>
-                    <li>Maintain a healthy lifestyle</li>
-                    <li>Adventure and exploration</li>
-                </ul>
-            </div>
-        </div>
-        <div class="box" onclick="toggleContent(this)">
-            Picture Gallery
-            <div class="content">
-                <h2>Picture Gallery</h2>
-                <div class="gallery-container">
-                    <div class="gallery-item">
-                        <img src="https://github.com/Marianne-101/Webprog_Personal-Website/blob/main/Images/camping.jpg?raw=true" alt="Camping">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://github.com/Marianne-101/Webprog_Personal-Website/blob/main/Images/ocean.jpg?raw=true" alt="Ocean">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://github.com/Marianne-101/Webprog_Personal-Website/blob/main/Images/picture%20of%20me.jpg?raw=true" alt="My Picture">
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-
-    <script>
-        function toggleContent(box) {
-            const content = box.querySelector('.content');
-            if (content.style.display === 'block') {
-                content.style.display = 'none';
-            } else {
-                document.querySelectorAll('.content').forEach(c => c.style.display = 'none');
-                content.style.display = 'block';
-            }
-        }
-    </script>
-
-<div id="app"> 
-    {{ message }}
-      <div v-bind:class="vueClass">This element is bound to the "pinkBG" class.</div>
-</div>
-
-<div id="app2">
-  <div>
-    <figure v-for="x in manyFoods">
-      <img v-bind:src="x.url">
-      <figcaption>{{ x.name }}</figcaption>
-    </figure>
-  </div>
-</div>
-
-    <div id="app3">
-<form v-on:submit.prevent="addItem">
-<p>
-      What do you need? <br>
-<input type="text" required placeholder="item name.." v-model="itemName">
-</p>
-<p>
-      How many? <br>
-<input type="number" placeholder="number of items.." v-model="itemNumber">
-</p>
-<p>
-      Important?
-<label>
-<input type="checkbox" v-model="itemImportant">
-        {{ itemImportant }}
-</label>
-</p>
-<button type="submit">Add item</button>
-</form>
-<br>
-<hr>
- 
-  <div>
-<p><strong>Shopping list:</strong></p>
-<ul id="ulToFind">
-<li 
-        v-for="item in shoppingList" 
-        v-bind:class="{ impClass: item.important }"
-        v-on:click="item.found=!item.found"
-        v-show="!item.found">
-          {{ item.name }}, {{ item.number}}
-</li>
-</ul>
-<ul id="ulFound">
-<li 
-        v-for="item in shoppingList" 
-        v-bind:class="{ impClass: item.important }"
-        v-on:click="item.found=!item.found"
-        v-show="item.found">
-          {{ item.name }}, {{ item.number}}
-</li>
-</ul>
-</div>
-</div>
-</template>
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        activeIndex: null,
+        sections: [
+          {
+            title: "About Me",
+            type: "text",
+            content: "Hello! My name is Marianne Ellise P. Lama. I am a computer science student..."
+          },
+          {
+            title: "Education / Achievements",
+            type: "list",
+            content: [
+              "High School: Signal Village National High School",
+              "Senior High: Learn & Explore Montessori School",
+              "Currently: Asia Pacific College",
+              "Graduated High School & Senior High with Honors"
+            ]
+          },
+          {
+            title: "IT Experience",
+            type: "list",
+            content: ["Programming", "Code Combat"]
+          },
+          {
+            title: "Hobbies & Interests",
+            type: "list",
+            content: ["Camping", "Hiking", "Swimming", "Learning guitar", "Traveling"]
+          },
+          {
+            title: "Goals",
+            type: "list",
+            content: ["To be successful", "To give back to those who believe in me", "Maintain a healthy lifestyle", "Adventure and exploration"]
+          },
+          {
+            title: "Picture Gallery",
+            type: "gallery",
+            content: [
+              { url: "https://github.com/Marianne-101/Webprog_Personal-Website/blob/main/Images/camping.jpg?raw=true", alt: "Camping" },
+              { url: "https://github.com/Marianne-101/Webprog_Personal-Website/blob/main/Images/ocean.jpg?raw=true", alt: "Ocean" },
+              { url: "https://github.com/Marianne-101/Webprog_Personal-Website/blob/main/Images/picture%20of%20me.jpg?raw=true", alt: "My Picture" }
+            ]
+          }
+        ]
+      };
+    },
+    methods: {
+      toggleContent(index) {
+        this.activeIndex = this.activeIndex === index ? null : index;
+      }
+    }
+  };
+  </script>  
