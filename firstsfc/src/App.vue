@@ -6,8 +6,8 @@
   <food-item/>
   <comment-form/>
   <comment/>
-  
    
-  </template>
-   
-  <script></script>
+ 
+</template>
+ 
+<script></script>

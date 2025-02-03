@@ -44,3 +44,4 @@ getCountries()
   background-color: lightyellow;
 }
 </style>
+has context menu
