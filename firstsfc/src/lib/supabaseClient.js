@@ -1,8 +1,3 @@
-import { createClient } from '@supabase/supabase-js';
-
-// Use environment variables for security
-const supabaseUrl = process.env.VUE_APP_SUPABASE_URL; // Get Supabase URL from .env file
-const supabaseAnonKey = process.env.VUE_APP_SUPABASE_ANON_KEY; // Get Supabase Anon Key from .env file
-
-// Create the Supabase client using the URL and Anon Key from environment variables
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+import { createClient } from '@supabase/supabase-js'
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+export const supabase = createClient('https://ifidmdesqwnluhmtagxw.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlmaWRtZGVzcXdubHVobXRhZ3h3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzgyMTc3ODEsImV4cCI6MjA1Mzc5Mzc4MX0.JyFcsCJhtTBY-7klwXGn6xoOK_uIhMnDT3ABGfTxF4k')
