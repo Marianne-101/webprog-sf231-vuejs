@@ -1,18 +1,22 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueDevTools from 'vite-plugin-vue-devtools'
+import vue from '@vitejs/plugin-vue' // Vue plugin
+import vueDevTools from 'vite-plugin-vue-devtools' // Vue DevTools plugin
 
-// https://vite.dev/config/
+// Vite config
 export default defineConfig({
   plugins: [
-    vue(),
-    vueDevTools(),
+    vue(),  // This enables Vue support in your project
+    vueDevTools(), // Optionally, enables Vue DevTools plugin for development
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      // Helps resolve the '@' symbol to the 'src' directory
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
+  },
+  // Ensuring Vite works smoothly with the latest versions of Vite and Vue
+  optimizeDeps: {
+    include: ['vue', '@vitejs/plugin-vue'],
   },
 })
