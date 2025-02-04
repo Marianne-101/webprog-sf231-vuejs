@@ -19,35 +19,27 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import { supabase } from '../lib/supabaseClient'
 
-
-const name = ref('');
-const comment = ref('');
-const submissionStatus = ref(null);
-
-// Your Supabase URL and Key - IMPORTANT!
-const tableName = 'comments'; // Name of your Supabase table
+const name = ref('')
+const comment = ref('')
+const submissionStatus = ref('')
 
 async function submitComment() {
-  submissionStatus.value = "Submitting...";
   try {
-    const { error } = await supabase
-      .from(tableName)
-      .insert([{ name: name.value, comment: comment.value }]);
-
+    const { error } = await supabase.from('comments').insert([{ name: name.value, comment: comment.value }])
     if (error) {
-      console.error("Error inserting comment:", error);
-      submissionStatus.value = "Error submitting comment. Please try again.";
+      console.error("Error submitting comment:", error)
+      submissionStatus.value = "Error submitting comment. Please try again."
     } else {
-      submissionStatus.value = "Comment submitted successfully!";
-      name.value = ''; // Clear form fields
-      comment.value = '';
+      submissionStatus.value = "Comment submitted successfully!"
+      name.value = '' // Clear form fields
+      comment.value = ''
     }
   } catch (err) {
-    console.error("An unexpected error occurred:", err);
-    submissionStatus.value = "An unexpected error occurred. Please try again later.";
+    console.error("An unexpected error occurred:", err)
+    submissionStatus.value = "An unexpected error occurred. Please try again later."
   }
 }
 </script>
