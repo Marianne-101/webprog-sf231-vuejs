@@ -18,18 +18,28 @@
 </style>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { supabase } from '../lib/supabaseClient'
+  import { supabase } from '../utils/supabase'
+  import { ref, onMounted } from 'vue'
 
-const comments = ref([])
+  // Define the todos ref with correct typing if needed
+  const todos = ref([])
 
-async function getComments() {
-  const { data } = await supabase.from('comments').select()
-  comments.value = data
-}
+  async function getTodos() {
+    const { data, error } = await supabase.from('todos').select()
+    if (error) {
+      console.error(error)  // Log the error if something goes wrong
+      return
+    }
+    todos.value = data
+  }
 
-onMounted(() => {
-  getComments()
-})
-
+  onMounted(() => {
+    getTodos()  // Call getTodos when the component is mounted
+  })
 </script>
+
+<template>
+  <ul>
+    <li v-for="todo in todos" :key="todo.id">{{ todo.name }}</li>
+  </ul>
+</template>
