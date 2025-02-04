@@ -17,25 +17,20 @@
 }
 </style>
 
+
 <script setup>
   import { supabase } from '../utils/supabase'
-  import { ref, onMounted } from 'vue'
-
-  // Define the todos ref with correct typing if needed
   const todos = ref([])
 
   async function getTodos() {
-    const { data, error } = await supabase.from('todos').select()
-    if (error) {
-      console.error(error)  // Log the error if something goes wrong
-      return
-    }
+    const { data } = await supabase.from('todos').select()
     todos.value = data
   }
 
   onMounted(() => {
-    getTodos()  // Call getTodos when the component is mounted
+    getTodos()
   })
+
 </script>
 
 <template>
