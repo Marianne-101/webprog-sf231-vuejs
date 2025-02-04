@@ -1,16 +1,13 @@
 <template>
   <h1>Food</h1>
-  <country/>
-  <food-item/>
-  <food-item/>
-  <food-item/>
-  <CommentForm/>
-  <Comment/>
-   
+  <country />
+  <food-item />
+  <food-item />
+  <food-item />
+  <comment-form />
+  <comment />
+
 
 </template>
 
-<script setup>
-import CommentForm from './components/CommentForm.vue'
-import Comment from './components/Comment.vue'
-</script>
+<script></script>
