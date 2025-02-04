@@ -1,19 +1,15 @@
 {
-  "name": "firstsfc",
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
+  "name": "your-project-name",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite",  // <-- Add this line
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.5.13"
+    // other dependencies here
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.1",
-    "vite": "^6.0.5",
-    "vite-plugin-vue-devtools": "^7.6.8"
+    "vite": "^latest-version"
   }
 }

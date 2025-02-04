@@ -4,14 +4,29 @@
     <form @submit.prevent="submitComment">
       <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" id="name" v-model="name" required class="form-control">
+        <input 
+          type="text" 
+          id="name" 
+          v-model.trim="name" 
+          required 
+          class="form-control"
+          placeholder="Enter your name"
+        >
       </div>
       <div class="form-group">
         <label for="comment">Comment:</label>
-        <textarea id="comment" v-model="comment" required class="form-control"></textarea>
+        <textarea 
+          id="comment" 
+          v-model.trim="comment" 
+          required 
+          class="form-control"
+          placeholder="Write your comment..."
+        ></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-      <div v-if="submissionStatus" class="mt-2">
+      <button type="submit" class="btn btn-primary" :disabled="isSubmitting">
+        {{ isSubmitting ? 'Submitting...' : 'Submit' }}
+      </button>
+      <div v-if="submissionStatus" :class="statusClass" class="mt-2">
         {{ submissionStatus }}
       </div>
     </form>
@@ -20,46 +35,53 @@
 
 <script setup>
 import { ref } from 'vue';
-import { supabase } from '../lib/supabaseClient'
-
+import { supabase } from '../lib/supabaseClient';
 
 const name = ref('');
 const comment = ref('');
 const submissionStatus = ref(null);
-
-// Your Supabase URL and Key - IMPORTANT!
-const tableName = 'comments'; // Name of your Supabase table
+const isSubmitting = ref(false);
 
 async function submitComment() {
+  // Prevent empty submissions (after trimming)
+  if (!name.value || !comment.value) {
+    submissionStatus.value = "Please fill out all fields.";
+    return;
+  }
+
   submissionStatus.value = "Submitting...";
+  isSubmitting.value = true;
+
   try {
     const { error } = await supabase
-      .from(tableName)
+      .from('comments')
       .insert([{ name: name.value, comment: comment.value }]);
 
     if (error) {
       console.error("Error inserting comment:", error);
-      submissionStatus.value = "Error submitting comment. Please try again.";
+      submissionStatus.value = "❌ Error submitting comment. Please try again.";
     } else {
-      submissionStatus.value = "Comment submitted successfully!";
-      name.value = ''; // Clear form fields
+      submissionStatus.value = "✅ Comment submitted successfully!";
+      name.value = ''; 
       comment.value = '';
     }
   } catch (err) {
-    console.error("An unexpected error occurred:", err);
-    submissionStatus.value = "An unexpected error occurred. Please try again later.";
+    console.error("Unexpected error:", err);
+    submissionStatus.value = "❌ An unexpected error occurred. Please try again later.";
+  } finally {
+    isSubmitting.value = false;
   }
 }
 </script>
 
 <style scoped>
-/* Basic styling - Customize as needed */
 .form-group {
   margin-bottom: 1rem;
 }
 
 label {
   display: block;
+  font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
@@ -68,6 +90,7 @@ label {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 1rem;
 }
 
 .btn {
@@ -77,5 +100,24 @@ label {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.mt-2 {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.success {
+  color: green;
+}
+
+.error {
+  color: red;
 }
 </style>
