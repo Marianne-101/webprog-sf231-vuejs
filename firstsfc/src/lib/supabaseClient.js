@@ -1,9 +1,11 @@
 // utils/supabaseClient.js
 import { createClient } from "@supabase/supabase-js";
 
-// Access environment variables prefixed with "VITE_" for Vite
+// Log the environment variables to the console
+console.log(import.meta.env.VITE_SUPABASE_URL);  // This should log the URL
+console.log(import.meta.env.VITE_SUPABASE_KEY);  // This should log the key
+
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
 
-// Create and export the Supabase client
 export const supabase = createClient(supabaseUrl, supabaseKey);
