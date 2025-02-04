@@ -1,33 +1,35 @@
 <template>
-  <h1>Comments</h1>
-  <ul>
-    <li v-for="comment in comments" :key="comment.id">
-      {{ comment.name }}: {{ comment.comment }}
-    </li>
-  </ul>
+  <div>
+    <h1>Comments</h1>
+    <ul>
+      <li v-for="comment in comments" :key="comment.id">
+        {{ comment.name }}: {{ comment.comment }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { supabase } from '../lib/supabaseClient'
+import { ref, onMounted } from 'vue';
+import { supabase } from '../lib/supabaseClient';
 
-const comments = ref([])
+const comments = ref([]);
 
 async function getComments() {
   try {
-    const { data, error } = await supabase.from('comments').select()
+    const { data, error } = await supabase.from('comments').select();
 
     if (error) {
-      console.error("Error fetching comments:", error)
+      console.error("Error fetching comments:", error);
     } else {
-      comments.value = data || []
+      comments.value = data || [];
     }
   } catch (err) {
-    console.error("Unexpected error:", err)
+    console.error("Unexpected error:", err);
   }
 }
 
-onMounted(getComments)
+onMounted(getComments);
 </script>
 
 <style scoped>

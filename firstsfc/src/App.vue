@@ -4,10 +4,13 @@
   <food-item/>
   <food-item/>
   <food-item/>
-  <comment-form/>
-  <comment/>
+  <CommentForm/>
+  <Comment/>
    
 
 </template>
 
-<script></script>
+<script setup>
+import CommentForm from './components/CommentForm.vue'
+import Comment from './components/Comment.vue'
+</script>

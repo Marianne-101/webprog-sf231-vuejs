@@ -11,7 +11,7 @@
           required 
           class="form-control"
           placeholder="Enter your name"
-        >
+        />
       </div>
       <div class="form-group">
         <label for="comment">Comment:</label>
@@ -53,7 +53,7 @@ async function submitComment() {
   isSubmitting.value = true;
 
   try {
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from('comments')
       .insert([{ name: name.value, comment: comment.value }]);
 
@@ -62,14 +62,14 @@ async function submitComment() {
       submissionStatus.value = "❌ Error submitting comment. Please try again.";
     } else {
       submissionStatus.value = "✅ Comment submitted successfully!";
-      name.value = ''; 
-      comment.value = '';
+      name.value = '';  // Clear the name field after submission
+      comment.value = '';  // Clear the comment field after submission
     }
   } catch (err) {
-    console.error("Unexpected error:", err);
+    console.error("Unexpected error:", err);  // Handle unexpected errors
     submissionStatus.value = "❌ An unexpected error occurred. Please try again later.";
   } finally {
-    isSubmitting.value = false;
+    isSubmitting.value = false;  // Reset the submitting status
   }
 }
 </script>
